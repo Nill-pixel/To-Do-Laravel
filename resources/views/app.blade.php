@@ -1,5 +1,10 @@
 @extends('layout.layout')
-@extends('modal')
+
+@extends('components.modal')
+@extends('components.form')
+@extends('components.input')
+@extends('components.button')
+
 @section('title', 'Gerenciador de tarefas')
 @section('content')
     <div class="row mb-3">
