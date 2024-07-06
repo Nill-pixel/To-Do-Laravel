@@ -1,4 +1,5 @@
-<div class="modal fade" id="save" tabindex="-1" aria-labelledby="saveLabel" aria-hidden="true">
+<div class="modal fade" id="save" tabindex="-1" aria-labelledby="saveLabel" aria-hidden="true"
+    @if (isset($task)) style="display:block" @endif>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

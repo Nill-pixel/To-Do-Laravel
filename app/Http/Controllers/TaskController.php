@@ -10,11 +10,21 @@ class TaskController extends Controller
 {
     public function index()
     {
-        return view('app');
+        return view('app', ['tasks' => Task::latest()->paginate()]);
+    }
+    public function edit(Task $task)
+    {
+        return view('app', ['task' => $task, 'tasks' => Task::latest()->paginate()]);
     }
     public function store(TaskRequest $taskRequest)
     {
         $task = Task::create($taskRequest->validated());
         return redirect()->route('task.home')->with('success', 'Task created successfully');
+    }
+
+    public function update(Task $task, TaskRequest $taskRequest)
+    {
+        $task->update($taskRequest->validated());
+        return redirect()->route('task.home')->with('success', 'Task update successfully');
     }
 }

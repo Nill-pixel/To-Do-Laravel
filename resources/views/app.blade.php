@@ -3,7 +3,8 @@
 @extends('components.modal')
 @extends('components.form')
 @extends('components.input')
-@extends('components.button')
+@include('components.button')
+@include('components.task')
 
 @section('title', 'Gerenciador de tarefas')
 @section('content')
@@ -18,18 +19,7 @@
         <div class="col-12">
             <ul class="list-group">
                 <!-- Task -->
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <div class="task-info">
-                        <input type="checkbox" class="mr-3">
-                        <span class="task-title">Tarefa</span>
-                        <input type="text" class="task-input form-control d-none" value="Tarefa">
-                    </div>
-                    <div class="task-actions">
-                        <button class="btn btn-sm btn-primary edit-btn">Editar</button>
-                        <button class="btn btn-sm btn-success save-btn d-none">Salvar</button>
-                        <button class="btn btn-sm btn-danger">Excluir</button>
-                    </div>
-                </li>
+                @yield('task')
             </ul>
         </div>
     </div>
