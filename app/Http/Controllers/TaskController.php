@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
-use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -12,10 +11,12 @@ class TaskController extends Controller
     {
         return view('app', ['tasks' => Task::latest()->paginate()]);
     }
+
     public function edit(Task $task)
     {
         return view('app', ['task' => $task, 'tasks' => Task::latest()->paginate()]);
     }
+
     public function store(TaskRequest $taskRequest)
     {
         $task = Task::create($taskRequest->validated());

@@ -10,9 +10,14 @@
 @section('content')
     <div class="row mb-3">
         <div class="col-12">
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#save">
-                Adicionar Tarefa
-            </button>
+            @if (isset($task))
+                <button data-bs-toggle="modal" data-bs-target="#save" class="btn btn-outline-info">Editar</button>
+                <button class="btn btn-outline-danger">Apagar</button>
+            @else
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#save">
+                    Adicionar Tarefa
+                </button>
+            @endif
         </div>
     </div>
     <div class="row ">
@@ -23,4 +28,17 @@
             </ul>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    @if (isset($task))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var myModal = new bootstrap.Modal(document.getElementById('save'), {
+                    keyboard: false
+                });
+                myModal.show();
+            });
+        </script>
+    @endif
 @endsection
