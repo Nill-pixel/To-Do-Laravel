@@ -28,4 +28,9 @@ class TaskController extends Controller
         $task->update($taskRequest->validated());
         return redirect()->route('task.home')->with('success', 'Task update successfully');
     }
+    public function complete(Task $task)
+    {
+        $task->toggleCompleted();
+        return redirect()->route('task.home')->with('success', 'Task completed successfully');
+    }
 }
