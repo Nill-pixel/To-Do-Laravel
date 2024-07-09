@@ -9,6 +9,13 @@
 @section('title', 'Gerenciador de tarefas')
 @section('content')
     <div class="row mb-3">
+        <div class="position-relative container text-center m-5">
+            @if (session()->has('success'))
+                <div class="position-absolute top-0 start-50 translate-middle-x alert alert-info col-sm-7" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
         <div class="col-12">
             @if (isset($task))
                 <button data-bs-toggle="modal" data-bs-target="#save" class="btn btn-outline-info">Editar</button>
@@ -18,7 +25,7 @@
                     <button class="btn btn-outline-danger" type="submit">Apagar</button>
                 </form>
             @else
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#save">
+                <button type="button" class="btn btn-success mt-5" data-bs-toggle="modal" data-bs-target="#save">
                     Adicionar Tarefa
                 </button>
             @endif
