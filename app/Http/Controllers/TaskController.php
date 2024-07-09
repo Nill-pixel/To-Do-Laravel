@@ -33,4 +33,10 @@ class TaskController extends Controller
         $task->toggleCompleted();
         return redirect()->route('task.home')->with('success', 'Task completed successfully');
     }
+
+    public function destroy(Task $task)
+    {
+        $task->delete();
+        return redirect()->route('task.home')->with('success', 'Task deleted successfully');
+    }
 }

@@ -14,7 +14,6 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h1>@yield('title')</h1>
-                <input type="text" class="form-control my-3" placeholder="Buscar Tarefas...">
             </div>
         </div>
         @yield('content')
