@@ -6,7 +6,7 @@
 -   [Getting Started](#getting_started)
 -   [Usage](#usage)
 -   [Deployment](#deployment)
--   [Contributing](../CONTRIBUTING.md)
+-   [Licence](Licence)
 
 ## About <a name = "about"></a>
 
@@ -130,30 +130,6 @@ Para usar o sistema, siga os passos abaixo:
 2. **Acesse a Aplicação**:
    Abra o navegador e acesse `http://localhost:8000` para interagir com o sistema de gerenciamento de tarefas.
 
-## Deployment <a name = "deployment"></a>
+## Licença <a name="licenca"></a>
 
-Para colocar o projeto em produção, siga os passos abaixo:
-
-1. **Configurar Variáveis de Ambiente**:
-   Defina as variáveis de ambiente no arquivo `.env` para o ambiente de produção, incluindo a configuração do banco de dados.
-
-2. **Executar Migrações**:
-   Execute as migrações do banco de dados para criar as tabelas necessárias.
-
-    ```bash
-    php artisan migrate --force
-    ```
-
-3. **Compilar Ativos**:
-   Compile os ativos para produção.
-
-    ```bash
-    npm run build
-    ```
-
-4. **Configurar Servidor Web**:
-   Configure o seu servidor web (Apache, Nginx, etc.) para apontar para o diretório `public` do projeto.
-
-## Contributing
-
-Veja [CONTRIBUTING.md](../CONTRIBUTING.md) para mais detalhes sobre como contribuir com o projeto.
+Este projeto está licenciado sob a Licença APACHE - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
