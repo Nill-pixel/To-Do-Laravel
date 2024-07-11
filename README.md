@@ -1,93 +1,159 @@
-## Como Instalar o Bootstrap 5 com o Laravel 11
+# To-Do-Laravel
+
+## Table of Contents
+
+-   [About](#about)
+-   [Getting Started](#getting_started)
+-   [Usage](#usage)
+-   [Deployment](#deployment)
+-   [Contributing](../CONTRIBUTING.md)
+
+## About <a name = "about"></a>
+
+O To-Do-Laravel é um aplicativo CRUD de gerenciamento de tarefas desenvolvido em Laravel. Este projeto tem como objetivo fornecer uma plataforma simples e eficiente para criar, editar, completar e excluir tarefas, utilizando o Bootstrap 5 para uma interface moderna e responsiva.
+
+## Getting Started <a name = "getting_started"></a>
+
+Estas instruções irão te guiar na obtenção de uma cópia do projeto em funcionamento na sua máquina local para fins de desenvolvimento e teste. Veja a seção [Deployment](#deployment) para notas sobre como implantar o projeto em um sistema ao vivo.
 
 ### Pré-requisitos
 
-Antes de começarmos, certifique-se de ter os seguintes pré-requisitos instalados em seu sistema:
+Certifique-se de ter os seguintes pré-requisitos instalados em seu sistema:
 
 -   Um projeto Laravel 11 configurado.
 -   Node.js e npm (Node Package Manager) instalados.
+-   MySQL ou outro banco de dados compatível.
 
-### Passos:
+### Instalando
 
-1. **Instalar o Bootstrap via npm**:
-   Abra seu terminal ou prompt de comando, navegue até o diretório raiz do seu projeto Laravel e execute o seguinte comando para instalar o Bootstrap 5:
+Siga os passos abaixo para configurar o ambiente de desenvolvimento:
+
+1. **Clonar o Repositório**:
+   Clone o repositório do projeto para a sua máquina local.
 
     ```bash
-    npm install -D bootstrap@5.3.3
+    git clone https://github.com/nill-pixel/To-Do-Laravel.git
+    cd To-Do-Laravel
     ```
 
-    Isso instala o Bootstrap 5.3.3 como uma dependência de desenvolvimento para o seu projeto.
-
-2. **Instalar o Sass**:
-   Como usaremos o Sass para estilização, instale o compilador Sass com o seguinte comando:
+2. **Instalar Dependências do PHP**:
+   Instale as dependências do PHP usando o Composer.
 
     ```bash
-    npm install -D sass
+    composer install
     ```
 
-3. **Instalar as dependências**:
-   Após instalar o Bootstrap e o Sass, instale as dependências restantes do projeto:
+3. **Instalar Dependências do Node**:
+   Instale as dependências do Node.js, incluindo o Bootstrap 5 e o Sass.
 
     ```bash
+    npm install -D bootstrap@5.3.3 sass
     npm install
     ```
 
 4. **Configurar o Vite**:
-   O Laravel 11 usa o Vite como o empacotador padrão para compilar ativos. Configure o Vite para incluir seus arquivos Sass e JavaScript:
+   Configure o Vite para incluir seus arquivos Sass e JavaScript. Crie um arquivo 'app.scss' no diretório 'resources/sass' e atualize o 'vite.config.js' no diretório raiz do projeto:
 
-    - Crie um novo arquivo Sass chamado 'app.scss' no diretório 'resources/sass'.
-    - Abra o arquivo 'vite.config.js' no diretório raiz do seu projeto e atualize-o com o seguinte código:
+    ```javascript
+    import { defineConfig } from "vite";
+    import laravel from "laravel-vite-plugin";
 
-        ```javascript
-        import { defineConfig } from "vite";
-        import laravel from "laravel-vite-plugin";
-
-        export default defineConfig({
-            plugins: [
-                laravel({
-                    input: [
-                        "resources/sass/app.scss", // Você pode alterar para o nome que preferir
-                        "resources/js/app.js",
-                    ],
-                    refresh: true,
-                }),
-            ],
-        });
-        ```
+    export default defineConfig({
+        plugins: [
+            laravel({
+                input: ["resources/sass/app.scss", "resources/js/app.js"],
+                refresh: true,
+            }),
+        ],
+    });
+    ```
 
 5. **Importar o Bootstrap**:
-   Abra o arquivo 'resources/js/app.js' e importe o Bootstrap adicionando a seguinte linha:
+   Abra o arquivo 'resources/js/app.js' e importe o Bootstrap.
 
     ```javascript
     import "bootstrap";
     ```
 
-    O arquivo deve se parecer com o exemplo abaixo:
-
-    ```javascript
-    import "./bootstrap";
-    import "bootstrap";
-    ```
-
-6. **Importar os arquivos do Bootstrap Sass**:
-   Abra o arquivo 'resources/sass/app.scss' e importe os arquivos do Bootstrap Sass adicionando a seguinte linha no topo do arquivo:
+    Em 'resources/sass/app.scss', importe os arquivos do Bootstrap Sass.
 
     ```scss
     @import "bootstrap/scss/bootstrap";
     ```
 
-7. **Incluir estilos e scripts no layout**:
-   No arquivo de layout principal (por exemplo, 'app.blade.php'), adicione a seguinte linha antes da tag `</head>` de fechamento para incluir os arquivos CSS e JavaScript compilados:
+6. **Incluir Estilos e Scripts no Layout**:
+   No arquivo de layout principal (por exemplo, 'app.blade.php'), adicione a linha abaixo antes da tag `</head>` para incluir os arquivos CSS e JavaScript compilados:
 
     ```blade
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     ```
 
-8. **Compilar ativos**:
-   Execute os seguintes comandos para compilar seus ativos:
+7. **Compilar Ativos**:
+   Execute o comando abaixo para compilar seus arquivos Sass e JavaScript:
 
     ```bash
     npm run dev
     ```
 
-    Isso compilará seus arquivos Sass e JavaScript, incluindo os ativos do Bootstrap.
+### Configurar o Banco de Dados
+
+1. **Configurar o Arquivo `.env`**:
+   Configure as variáveis de ambiente no arquivo `.env` para conexão com o banco de dados MySQL. Exemplos de configuração:
+
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=nome_do_banco_de_dados
+    DB_USERNAME=usuario
+    DB_PASSWORD=senha
+    ```
+
+2. **Executar Migrações**:
+   Execute as migrações do banco de dados para criar as tabelas necessárias.
+
+    ```bash
+    php artisan migrate
+    ```
+
+## Usage <a name = "usage"></a>
+
+Para usar o sistema, siga os passos abaixo:
+
+1. **Inicie o Servidor de Desenvolvimento**:
+   Execute o servidor de desenvolvimento do Laravel.
+
+    ```bash
+    php artisan serve
+    ```
+
+2. **Acesse a Aplicação**:
+   Abra o navegador e acesse `http://localhost:8000` para interagir com o sistema de gerenciamento de tarefas.
+
+## Deployment <a name = "deployment"></a>
+
+Para colocar o projeto em produção, siga os passos abaixo:
+
+1. **Configurar Variáveis de Ambiente**:
+   Defina as variáveis de ambiente no arquivo `.env` para o ambiente de produção, incluindo a configuração do banco de dados.
+
+2. **Executar Migrações**:
+   Execute as migrações do banco de dados para criar as tabelas necessárias.
+
+    ```bash
+    php artisan migrate --force
+    ```
+
+3. **Compilar Ativos**:
+   Compile os ativos para produção.
+
+    ```bash
+    npm run build
+    ```
+
+4. **Configurar Servidor Web**:
+   Configure o seu servidor web (Apache, Nginx, etc.) para apontar para o diretório `public` do projeto.
+
+## Contributing
+
+Veja [CONTRIBUTING.md](../CONTRIBUTING.md) para mais detalhes sobre como contribuir com o projeto.
