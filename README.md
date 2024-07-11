@@ -130,6 +130,6 @@ Para usar o sistema, siga os passos abaixo:
 2. **Acesse a Aplicação**:
    Abra o navegador e acesse `http://localhost:8000` para interagir com o sistema de gerenciamento de tarefas.
 
-## Licença <a name="licenca"></a>
+## License <a name="licenca"></a>
 
 Este projeto está licenciado sob a Licença APACHE - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
